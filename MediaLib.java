@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class MediaLib
 {
   public static String owner = "PLTW";
@@ -10,8 +12,14 @@ public class MediaLib
   private Movie movie;
   private Song song;
 
+  private static String getDateTime() {
+    Calendar cal = Calendar.getInstance();
+    String dateTimeStr = cal.getTime().toString();
+    return dateTimeStr;
+  }
+
   public MediaLib() {
-    lastModified = LastModified.getDateTime();
+    lastModified = getDateTime();
   }
   
   public void addBook(Book b) {
@@ -19,7 +27,7 @@ public class MediaLib
       book = b;
       entries++;
       books++;
-      lastModified = LastModified.getDateTime();
+      lastModified = getDateTime();
     } 
     else {
       System.out.println("Cannot add a new book: A book already exists");
@@ -31,7 +39,7 @@ public class MediaLib
       movie = m;
       entries++;
       movies++;
-      lastModified = LastModified.getDateTime();
+      lastModified = getDateTime();
     }
     else {
       System.out.println("Cannot add a new movie: A movie already exists");
@@ -43,7 +51,7 @@ public class MediaLib
       song = s;
       entries++;
       songs++;
-      lastModified = LastModified.getDateTime();
+      lastModified = getDateTime();
     }
     else {
       System.out.println("Cannot add a new song: A song already exists");
